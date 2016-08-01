@@ -212,7 +212,11 @@ class ZkTreeUtil(object):
 		dest_zk_client = create_zk_client(dest_zk)
 		znode_dict = json.loads(f.read())
 		for (path, znode_val) in znode_dict.items():
-			znode = ZNode(path, znode_val['stat'], str(znode_val['data']))
+			if isinstance(data, unicode):
+				data = data.decode('utf8')
+			else:
+				data = str(data)
+			znode = ZNode(path, znode_val['stat'], data)
 			self.process_znode_write_to_zk(znode, dest_zk_client, dest_zk_path, resolve)	
 		f.close()
 
