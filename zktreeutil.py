@@ -214,7 +214,7 @@ class ZkTreeUtil(object):
 		for (path, znode_val) in znode_dict.items():
 			data = znode_val['data']
 			if isinstance(data, unicode):
-				data = data.decode('utf8')
+				data = data.encode('utf8') # convert unicode to str
 			else:
 				data = str(data)
 			znode = ZNode(path, znode_val['stat'], data)
