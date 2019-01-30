@@ -31,7 +31,7 @@ def parse_zk_string(zk_string):
 	"""Separate a ZK connect string (e.g. zookeeper.foo.com:2181/znode1/subnode1)
 	into the hostname:port and the ZK path.
 	"""
-	idx = string.find(zk_string, '/')
+	idx = str.find(zk_string, '/')
 	if idx == -1:
 		raise Exception('Invalid Zookeeper connect string')
 	else:
