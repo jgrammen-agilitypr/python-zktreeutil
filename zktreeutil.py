@@ -213,7 +213,7 @@ class ZkTreeUtil(object):
 		znode_dict = json.loads(f.read())
 		for (path, znode_val) in znode_dict.items():
 			data = znode_val['data']
-			if isinstance(data, unicode):
+			if isinstance(data, str):
 				data = data.encode('utf8') # convert unicode to str
 			else:
 				data = str(data)
